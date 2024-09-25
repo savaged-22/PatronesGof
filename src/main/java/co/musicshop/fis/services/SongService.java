@@ -36,8 +36,14 @@ public class SongService implements SongServiceInterface {
 
     @Override
     public Song updateSong(Song song) {
-        return songRepository.save(song);
+        // Verificar si la canción existe antes de actualizar
+        if (song.getId() != null && songRepository.existsById(song.getId())) {
+            return songRepository.save(song); // Actualizar la canción existente
+        } else {
+            throw new IllegalArgumentException("No se puede actualizar la canción: ID no existe.");
+        }
     }
+    
 
     @Override
     public Song findSongById(Long id) {
