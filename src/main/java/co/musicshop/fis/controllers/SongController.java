@@ -33,54 +33,71 @@ public class SongController {
         return "songs"; // Refers to songs.html (view)
     }
 
-    // Mostrar formulario para agregar una nueva canción
-    @GetMapping("/add")
-    public String addSongForm(Model model) {
-        model.addAttribute("createSongDto", new CreateSongDto());
+    // Mostrar formulario para agregar o editar una canción
+    @GetMapping({"/add", "/update/{id}"})
+    public String addOrEditSongForm(@PathVariable(value = "id", required = false) Long id, Model model) {
+        CreateSongDto createSongDto;
+
+        if (id != null) {  // Modo edición
+            Song song = songService.findSongById(id);
+            if (song == null) {
+                return "redirect:/songs"; // Redirigir si la canción no se encuentra
+            }
+
+            // Cargar los datos existentes en el DTO
+            createSongDto = new CreateSongDto(
+                song.getTitle(),
+                song.getArtist(),
+                song.getGenre(),
+                song.getYear(),
+                song.getAlbum(),
+                song.getAlbumCover(),
+                song.getDuration()
+            );
+
+            model.addAttribute("songId", id); // Pasar el ID al formulario
+        } else {  // Modo agregar
+            createSongDto = new CreateSongDto();
+        }
+
+        model.addAttribute("createSongDto", createSongDto);
         return "add"; // Refers to add.html (view)
     }
 
-    // Procesar el formulario para agregar una nueva canción
-    @PostMapping()
-    public String addSong(@ModelAttribute("createSongDto") CreateSongDto createSongDto) {
-        Song song = new Song(
+    // Procesar el formulario para agregar o actualizar una canción
+    @PostMapping({"/add", "/update/{id}"})
+    public String saveOrUpdateSong(@PathVariable(value = "id", required = false) Long id, 
+                                   @ModelAttribute("createSongDto") CreateSongDto createSongDto) {
+        Song song;
+
+        if (id != null) {  // Modo actualización
+            song = songService.findSongById(id);
+            if (song == null) {
+                return "redirect:/songs"; // Redirigir si no existe la canción
+            }
+
+            // Actualizar los valores del objeto existente
+            song.setTitle(createSongDto.getTitle());
+            song.setArtist(createSongDto.getArtist());
+            song.setGenre(createSongDto.getGenre());
+            song.setYear(createSongDto.getYear());
+            song.setAlbum(createSongDto.getAlbum());
+            song.setAlbumCover(createSongDto.getAlbumCover());
+            song.setDuration(createSongDto.getDuration());
+
+            songService.updateSong(song); // Actualizar la canción
+        } else {  // Modo agregar
+            song = new Song(
                 createSongDto.getTitle(),
                 createSongDto.getArtist(),
                 createSongDto.getGenre(),
                 createSongDto.getYear(),
                 createSongDto.getAlbum(),
                 createSongDto.getAlbumCover(),
-                createSongDto.getDuration());
+                createSongDto.getDuration()
+            );
 
-        songService.saveSong(song);
-        return "redirect:/songs"; // Redirigir a /songs
-    }
-
-    // Mostrar formulario para actualizar una canción existente
-    @GetMapping("/update/{id}")
-    public String editSongForm(@PathVariable("id") Long id) {
-        Song song = songService.findSongById(id);
-        
-        if (song == null) {
-            return "redirect:/songs"; // Redirigir si la canción no se encuentra
-        }
-        return "redirect:/update"; // Refers to update.html (view)
-    }
-
-    // Procesar el formulario de actualización de una canción
-    @PostMapping("/update/{id}")
-    public String updateSong(@PathVariable("id") Long id, @ModelAttribute("song") Song updatedSong) {
-        Song song = songService.findSongById(id);
-
-        if (song != null) {
-            song.setTitle(updatedSong.getTitle());
-            song.setArtist(updatedSong.getArtist());
-            song.setGenre(updatedSong.getGenre());
-            song.setYear(updatedSong.getYear());
-            song.setAlbum(updatedSong.getAlbum());
-            song.setAlbumCover(updatedSong.getAlbumCover());
-            song.setDuration(updatedSong.getDuration());
-            songService.saveSong(song); // Usar saveSong para actualizar la canción
+            songService.saveSong(song); // Guardar la nueva canción
         }
 
         return "redirect:/songs"; // Redirigir a la lista de canciones
