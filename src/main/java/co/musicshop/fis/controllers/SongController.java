@@ -57,7 +57,7 @@ public class SongController {
     }
 
     // Mostrar formulario para actualizar una canción existente
-    @GetMapping("/update/{id}")
+    @GetMapping("/add")
     public String editSongForm(@PathVariable("id") Long id, Model model) {
         Song song = songService.findSongById(id);
         if (song == null) {
@@ -77,12 +77,12 @@ public class SongController {
         model.addAttribute("createSongDto", createSongDto);
         model.addAttribute("songId", id);
     
-        return "add"; // Reutilizar vista de agregar para editar
+        return "redirect:/songs"; // Reutilizar vista de agregar para editar
     }
     
 
     // Procesar el formulario de actualización de una canción existente
-    @PostMapping("/update/{id}")
+    @PostMapping("/add")
     public String updateSong(@PathVariable("id") Long id, @ModelAttribute("createSongDto") CreateSongDto createSongDto) {
         Song song = songService.findSongById(id);
 
