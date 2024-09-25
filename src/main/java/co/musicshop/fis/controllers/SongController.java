@@ -33,15 +33,15 @@ public class SongController {
         return "songs"; // Refers to songs.html (view)
     }
 
-    // Mostrar formulario para agregar una nueva canción
+    // Mostrar formulario para agregar o actualizar una canción
     @GetMapping("/add")
     public String addSongForm(Model model) {
-        model.addAttribute("createSongDto", new CreateSongDto());
+        model.addAttribute("createSongDto", new CreateSongDto());  // DTO vacío para agregar nueva canción
         return "add"; // Refers to add.html (view)
     }
 
     // Procesar el formulario para agregar una nueva canción
-    @PostMapping("/add")
+    @PostMapping()
     public String addSong(@ModelAttribute("createSongDto") CreateSongDto createSongDto) {
         Song song = new Song(
                 createSongDto.getTitle(),
@@ -56,7 +56,7 @@ public class SongController {
         return "redirect:/songs"; // Redirigir a /songs
     }
 
-    // Mostrar formulario para actualizar una canción existente usando la misma vista "add"
+    // Mostrar formulario para actualizar una canción existente
     @GetMapping("/update/{id}")
     public String editSongForm(@PathVariable("id") Long id, Model model) {
         Song song = songService.findSongById(id);
@@ -65,7 +65,7 @@ public class SongController {
             return "redirect:/songs"; // Redirigir si la canción no se encuentra
         }
 
-        // Cargar los datos existentes en el DTO para pasarlo al formulario
+        // Cargar los datos existentes en el DTO para pasarlos al formulario
         CreateSongDto createSongDto = new CreateSongDto(
             song.getTitle(),
             song.getArtist(),
@@ -76,13 +76,13 @@ public class SongController {
             song.getDuration()
         );
         
-        model.addAttribute("createSongDto", createSongDto);
-        model.addAttribute("songId", id); // Pasar el ID al formulario
+        model.addAttribute("createSongDto", createSongDto); // Pasar datos actuales al formulario
+        model.addAttribute("songId", id); // Pasar el ID de la canción para su actualización
 
-        return "add"; // Reutilizar la vista de "add.html" para actualizar
+        return "add"; // Reutilizamos la vista de "add.html" para actualizar
     }
 
-    // Procesar el formulario de actualización de una canción
+    // Procesar el formulario de actualización de una canción existente
     @PostMapping("/update/{id}")
     public String updateSong(@PathVariable("id") Long id, @ModelAttribute("createSongDto") CreateSongDto createSongDto) {
         Song song = songService.findSongById(id);
@@ -97,7 +97,7 @@ public class SongController {
             song.setAlbumCover(createSongDto.getAlbumCover());
             song.setDuration(createSongDto.getDuration());
 
-            songService.updateSong(song); // Actualizar la canción
+            songService.saveSong(song); // Guardar la actualización de la canción
         }
 
         return "redirect:/songs"; // Redirigir a la lista de canciones
