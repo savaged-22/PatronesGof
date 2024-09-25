@@ -7,32 +7,39 @@
 </head>
 <body>
     <h1>{{ createSongDto.id ? 'Editar Canción' : 'Agregar Canción' }}</h1>
-    <form action="{{ createSongDto.id ? '/songs/edit/' + createSongDto.id : '/songs' }}" method="post">
-        <input type="hidden" name="id" value="{{ createSongDto.id }}">
-        
-        <label for="title">Título:</label>
-        <input type="text" id="title" name="title" value="{{ createSongDto.title }}" required>
-        
-        <label for="artist">Artista:</label>
-        <input type="text" id="artist" name="artist" value="{{ createSongDto.artist }}" required>
-        
-        <label for="genre">Género:</label>
-        <input type="text" id="genre" name="genre" value="{{ createSongDto.genre }}" required>
-        
-        <label for="year">Año:</label>
-        <input type="number" id="year" name="year" value="{{ createSongDto.year }}" required>
-        
-        <label for="album">Álbum:</label>
-        <input type="text" id="album" name="album" value="{{ createSongDto.album }}" required>
-        
-        <label for="albumCover">Portada del Álbum:</label>
-        <input type="text" id="albumCover" name="albumCover" value="{{ createSongDto.albumCover }}">
-        
-        <label for="duration">Duración:</label>
-        <input type="text" id="duration" name="duration" value="{{ createSongDto.duration }}" required>
-        
-        <button type="submit">{{ createSongDto.id ? 'Actualizar Canción' : 'Agregar Canción' }}</button>
+    <form action="/songs/edit/{{ songId }}" method="post">
+        <input type="hidden" name="id" value="{{ songId }}">
+        <div>
+            <label>Título:</label>
+            <input type="text" name="title" value="{{ createSongDto.title }}" required>
+        </div>
+        <div>
+            <label>Artista:</label>
+            <input type="text" name="artist" value="{{ createSongDto.artist }}" required>
+        </div>
+        <div>
+            <label>Género:</label>
+            <input type="text" name="genre" value="{{ createSongDto.genre }}" required>
+        </div>
+        <div>
+            <label>Año:</label>
+            <input type="number" name="year" value="{{ createSongDto.year }}" required>
+        </div>
+        <div>
+            <label>Álbum:</label>
+            <input type="text" name="album" value="{{ createSongDto.album }}" required>
+        </div>
+        <div>
+            <label>Portada del Álbum:</label>
+            <input type="text" name="albumCover" value="{{ createSongDto.albumCover }}">
+        </div>
+        <div>
+            <label>Duración:</label>
+            <input type="text" name="duration" value="{{ createSongDto.duration }}" required>
+        </div>
+        <button type="submit">Actualizar Canción</button>
     </form>
+    
     <a href="/songs">Volver a la lista de canciones</a>
 </body>
 </html>
