@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs</title>
+
+    <link th:href="@{/styles/songs.css}" rel="stylesheet" />
+</head>
+<body>
+
+<h1>Songs</h1>
+
+<a href="/songs/add" class="link-button">Add a new song</a>
+
+<!-- Check if songs list is empty -->
+<div th:if="${#lists.isEmpty(songs)}">
+    <p>No songs available. Please add some songs.</p>
+</div>
+
+<!-- Display songs list when it's not empty -->
+<ul th:if="${!#lists.isEmpty(songs)}">
+    <li th:each="song : ${songs}">
+        <div class="song-item">
+            <span th:text="${song.title} + ' - ' + ${song.artist}"></span>
+            <img th:src="@{${song.albumCover}}" th:alt="${song.album}" width="100" height="100"/>
+            <a th:href="@{/songs/delete/{id}(id=${song.id})}" class="button">DELETE</a>
+            <a th:href="@{/songs/edit/{id}(id=${song.id})}" class="button">UPDATE</a>
+        </div>
+    </li>
+</ul>
+
+</body>
+</html>
