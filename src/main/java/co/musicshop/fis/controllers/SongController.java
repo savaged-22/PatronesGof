@@ -95,7 +95,7 @@ public class SongController {
             song.setAlbumCover(createSongDto.getAlbumCover());
             song.setDuration(createSongDto.getDuration());
 
-            songService.saveSong(song); // Guardar la actualización de la canción
+            songService.updateSong(song); // Guardar la actualización de la canción
         }
 
         return "redirect:/songs"; // Redirigir a la lista de canciones
