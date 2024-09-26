@@ -8,8 +8,8 @@
         <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>co.music-shop.fis</groupId>
-    <artifactId>music-shop</artifactId>
+    <groupId>co.patronesgof.fis</groupId>
+    <artifactId>patronesgof</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>music-shop</name>
     <description>music-shop</description>
