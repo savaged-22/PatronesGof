@@ -1,4 +1,4 @@
-# Music Shop
+# Patrones GoF
 
 Este proyecto es una aplicación web para gestionar una tienda de música. Permite a los usuarios ver una lista de canciones, agregar nuevas canciones, actualizar información de canciones existentes y eliminar canciones.
 
@@ -51,4 +51,3 @@ El proyecto sigue una estructura estándar de Spring Boot con Maven:
 ## Uso
 
 - Accede a la aplicación en `http://localhost:8080/songs`.
-- Usa la interfaz para agregar, actualizar, eliminar y ver canciones.
