@@ -50,4 +50,4 @@ El proyecto sigue una estructura estándar de Spring Boot con Maven:
 
 ## Uso
 
-- Accede a la aplicación en `http://localhost:8080/songs`.
+- Accede a la aplicación en `http://localhost:8080/index`.
