@@ -1,9 +1,6 @@
-Listo base de datos montada, 
-
-EL archivo aplication.yml: 
 spring:
   application:
-    name: music-shop
+    name: transmilenio
   datasource:
     url: "jdbc:postgresql://4.tcp.ngrok.io:12394/transmilenio_db"
     username: savaged22
