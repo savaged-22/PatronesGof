@@ -1,14 +1,16 @@
 package co.patronesgof.fis.controllers;
 
-import co.patronesgof.fis.dtos.CreateRutaDto;
-import co.patronesgof.fis.models.Ruta;
-import co.patronesgof.fis.services.RutaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import co.patronesgof.fis.dtos.CreateRutaDto;
+import co.patronesgof.fis.models.Ruta;
+import co.patronesgof.fis.services.RutaService;
 
 @Controller
 public class RutaController {
@@ -17,6 +19,7 @@ public class RutaController {
     private RutaService rutaService;
 
     // Muestra el formulario de creación de rutas
+    @RequestMapping("/api/routes")
     @GetMapping("/routes")
     public String showRouteForm(Model model) {
         model.addAttribute("createRouteDto", new CreateRutaDto());
