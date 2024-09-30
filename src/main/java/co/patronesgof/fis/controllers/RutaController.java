@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;  // Añadir esta importación
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,7 +14,7 @@ import co.patronesgof.fis.models.Ruta;
 import co.patronesgof.fis.services.RutaService;
 
 @Controller
-@RequestMapping("/api/routes")
+@RequestMapping("/routes")
 public class RutaController {
 
     @Autowired
@@ -24,7 +25,7 @@ public class RutaController {
     public String showRouteForm(Model model) {
         model.addAttribute("createRouteDto", new CreateRutaDto());
         model.addAttribute("routes", rutaService.findAll()); // Agregamos la lista de rutas existentes
-        return "ruta-form";
+        return "routes-list";
     }
 
     // Crea una nueva ruta a partir de los datos enviados por el formulario
@@ -36,5 +37,12 @@ public class RutaController {
         ruta.setTipoRuta(createRouteDto.getTipoRuta());
         rutaService.save(ruta); // Guarda la nueva ruta
         return "redirect:/routes"; // Redirige a la página con la lista de rutas
+    }
+
+    // Eliminar una ruta
+    @PostMapping("/{id}/eliminar")
+    public String deleteRoute(@PathVariable Long id) {  // @PathVariable ahora está importado correctamente
+        rutaService.deleteById(id);
+        return "redirect:/routes";
     }
 }

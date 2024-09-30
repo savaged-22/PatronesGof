@@ -23,8 +23,8 @@
                     <td th:text="${usuario.nombre}"></td>
                     <td th:text="${usuario.tipoUsuario}"></td>
                     <td>
-                        <a th:href="@{/usuarios/edit/{id}(id=${usuario.id})}">Editar</a>
-                        <form th:action="@{/usuarios/delete/{id}(id=${usuario.id})}" method="post" style="display:inline;">
+                        <a th:href="@{/usuarios/{id}(id=${usuario.id})}">Detalles</a>
+                        <form th:action="@{/usuarios/{id}/delete(id=${usuario.id})}" method="post" style="display:inline;">
                             <button type="submit">Eliminar</button>
                         </form>
                     </td>
