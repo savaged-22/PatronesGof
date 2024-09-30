@@ -24,10 +24,16 @@ public class UsuarioService {
         return usuarioRepository.findById(id);
     }
 
-    public Usuario save(CreateUsuarioDto createUsuarioDto) {
+    // Cambiar la lógica de guardar un Usuario usando CreateUsuarioDto
+    public Usuario save(CreateUsuarioDto usuarioDto) {
         Usuario usuario = new Usuario();
-        usuario.setNombre(createUsuarioDto.getNombre());
-        usuario.setTipoUsuario(createUsuarioDto.getTipoUsuario());
+        usuario.setNombre(usuarioDto.getNombre());
+        usuario.setTipoUsuario(usuarioDto.getTipoUsuario());
+        return usuarioRepository.save(usuario);
+    }
+
+    // Sobrecargar el método save para aceptar un Usuario completo
+    public Usuario save(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 

@@ -1,7 +1,10 @@
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/PatronesGofApplication.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/controllers/EstacionController.java
+/Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/controllers/RutaController.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/controllers/UsuarioController.java
-/Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/dtos/UsuarioDTO.java
+/Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/dtos/CreateEstacionDto.java
+/Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/dtos/CreateRutaDto.java
+/Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/dtos/CreateUsuarioDto.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/models/Bus.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/models/BusArticulado.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/models/BusBiarticulado.java
@@ -15,8 +18,13 @@
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/models/UsuarioInterface.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/models/UsuarioRegular.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/repositories/BusRepository.java
+/Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/repositories/EstacionRepository.java
+/Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/repositories/RutaRepository.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/repositories/UsuarioRepository.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/services/BusFactoryService.java
+/Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/services/EstacionService.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/services/RutaFactoryService.java
+/Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/services/RutaService.java
+/Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/services/UsuarioService.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/services/ValidadorConcretoService.java
 /Users/saraalbarracin/Downloads/GitProjects/PatronesGof/src/main/java/co/patronesgof/fis/services/interfaces/ValidadorVisitorInterfaceService.java
