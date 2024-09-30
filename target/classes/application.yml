@@ -1,10 +1,13 @@
+Listo base de datos montada, 
+
+EL archivo aplication.yml: 
 spring:
   application:
     name: music-shop
   datasource:
-    url: "jdbc:postgresql://ep-spring-sound-a5808511.us-east-2.aws.neon.tech/music-shop-group-3"
-    username: music-shop_owner
-    password: ZXIr9QuGR3Mt
+    url: "jdbc:postgresql://4.tcp.ngrok.io:12394/transmilenio_db"
+    username: savaged22
+    password: secret
     driver-class-name: org.postgresql.Driver
   jpa:
     open-in-view: true
