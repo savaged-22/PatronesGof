@@ -1,6 +1,6 @@
 spring:
   application:
-    name: transmilenio
+    name: music-shop
   datasource:
     url: "jdbc:postgresql://4.tcp.ngrok.io:12394/transmilenio_db"
     username: savaged22
