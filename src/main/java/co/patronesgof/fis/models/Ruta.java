@@ -1,17 +1,30 @@
 package co.patronesgof.fis.models;
 
-public abstract class Ruta {
-    protected String codigo;
-    protected String nombre;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    public Ruta(String codigo, String nombre) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-    }
+@Entity
+public class Ruta {
 
-    public abstract void mostrarInfo();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String codigo;
+    private String nombre;
+    private String tipoRuta; // Local, Troncal
 
     // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getCodigo() {
         return codigo;
     }
@@ -26,5 +39,13 @@ public abstract class Ruta {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getTipoRuta() {
+        return tipoRuta;
+    }
+
+    public void setTipoRuta(String tipoRuta) {
+        this.tipoRuta = tipoRuta;
     }
 }

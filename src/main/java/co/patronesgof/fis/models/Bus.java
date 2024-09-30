@@ -1,23 +1,35 @@
 package co.patronesgof.fis.models;
 
-public abstract class Bus {
-    protected String id;
-    protected int capacidad;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    public Bus(String id, int capacidad) {
-        this.id = id;
-        this.capacidad = capacidad;
-    }
+@Entity
+public class Bus {
 
-    public abstract void mostrarInfo();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String tipoBus;
+    private int capacidad;
 
     // Getters y Setters
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTipoBus() {
+        return tipoBus;
+    }
+
+    public void setTipoBus(String tipoBus) {
+        this.tipoBus = tipoBus;
     }
 
     public int getCapacidad() {

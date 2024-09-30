@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Transporte Público</title>
-    <link rel="stylesheet" th:href="@{/static/styles/main.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransMilenio - Sistema de Transporte</title>
 </head>
 <body>
-    <h1>Bienvenido al Sistema de Transporte Público</h1>
-    <div class="container">
-        <p>Gestiona estaciones, usuarios, buses y rutas a través de esta plataforma.</p>
-    </div>
+    <h1>Bienvenido al Sistema de Transporte TransMilenio</h1>
+    
+    <nav>
+        <ul>
+            <li><a href="/routes">Gestionar Rutas</a></li>
+            <li><a href="/estaciones">Gestionar Estaciones</a></li>
+            <li><a href="/usuarios">Gestionar Usuarios</a></li>
+        </ul>
+    </nav>
 </body>
 </html>

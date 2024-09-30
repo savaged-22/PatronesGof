@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Ruta</title>
+</head>
+<body>
+    <h1>Crear Nueva Ruta</h1>
+    
+    <form action="/routes" method="post">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" required>
+        <br>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+
+        <label for="tipoRuta">Tipo de Ruta:</label>
+        <select id="tipoRuta" name="tipoRuta" required>
+            <option value="Local">Local</option>
+            <option value="Troncal">Troncal</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Crear Ruta</button>
+    </form>
+
+    <h2>Rutas Existentes</h2>
+    <ul>
+        <th:block th:each="ruta : ${routes}">
+            <li th:text="${ruta.nombre} + ' (' + ${ruta.codigo} + ')'"></li>
+        </th:block>
+    </ul>
+
+</body>
+</html>

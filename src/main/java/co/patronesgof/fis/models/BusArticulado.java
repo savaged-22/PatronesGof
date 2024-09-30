@@ -1,13 +1,11 @@
 package co.patronesgof.fis.models;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class BusArticulado extends Bus {
-
-    public BusArticulado(String id, int capacidad) {
-        super(id, capacidad);
-    }
-
-    @Override
-    public void mostrarInfo() {
-        System.out.println("Bus Articulado - ID: " + id + ", Capacidad: " + capacidad);
+    
+    public BusArticulado() {
+        super.setTipoBus("Articulado");
     }
 }

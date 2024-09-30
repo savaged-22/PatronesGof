@@ -1,44 +1,42 @@
 package co.patronesgof.fis.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Estacion {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nombre;
     private String estado;
-    private List<Usuario> usuarios;
 
-    public Estacion(String nombre) {
-        this.nombre = nombre;
-        this.usuarios = new ArrayList<>();
+    // Getters y Setters
+    public Long getId() {
+        return id;
     }
 
-    public void suscribir(Usuario usuario) {
-        usuarios.add(usuario);
-        System.out.println("Usuario " + usuario + " suscrito a " + nombre);
-    }
-
-    public void desuscribir(Usuario usuario) {
-        usuarios.remove(usuario);
-        System.out.println("Usuario " + usuario + " desuscrito de " + nombre);
-    }
-
-    public void setEstado(String nuevoEstado) {
-        this.estado = nuevoEstado;
-        notificarUsuarios();
-    }
-
-    private void notificarUsuarios() {
-        for (Usuario usuario : usuarios) {
-            usuario.actualizar("La estación " + nombre + " ha cambiado a estado: " + estado);
-        }
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
         return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getEstado() {
         return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

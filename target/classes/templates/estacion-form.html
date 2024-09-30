@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Estación</title>
+</head>
+<body>
+    <h1>Crear Nueva Estación</h1>
+    
+    <form action="/estaciones" method="post">
+        <label for="nombre">Nombre de la Estación:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" required>
+        <br><br>
+
+        <button type="submit">Crear Estación</button>
+    </form>
+
+    <h2>Estaciones Existentes</h2>
+    <ul>
+        <th:block th:each="estacion : ${estaciones}">
+            <li th:text="${estacion.nombre} + ' - ' + ${estacion.estado}"></li>
+        </th:block>
+    </ul>
+
+</body>
+</html>

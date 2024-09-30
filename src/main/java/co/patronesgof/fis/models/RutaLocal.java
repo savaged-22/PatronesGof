@@ -1,13 +1,11 @@
 package co.patronesgof.fis.models;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class RutaLocal extends Ruta {
 
-    public RutaLocal(String codigo, String nombre) {
-        super(codigo, nombre);
-    }
-
-    @Override
-    public void mostrarInfo() {
-        System.out.println("Ruta Local - Código: " + codigo + ", Nombre: " + nombre);
+    public RutaLocal() {
+        super.setTipoRuta("Local");
     }
 }
