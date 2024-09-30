@@ -39,7 +39,10 @@ public class UsuarioController {
 
     @PostMapping
     public Usuario createUsuario(@RequestBody CreateUsuarioDto usuarioDto) {
-        return usuarioService.save(usuarioDto); // Usamos el DTO en el método correcto
+        Usuario usuario = new Usuario();
+        usuario.setNombre(usuarioDto.getNombre());
+        usuario.setTipoUsuario(usuarioDto.getTipoUsuario());
+        return usuarioService.save(usuario); 
     }
 
     @PutMapping("/{id}")

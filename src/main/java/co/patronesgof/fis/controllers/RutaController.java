@@ -13,14 +13,14 @@ import co.patronesgof.fis.models.Ruta;
 import co.patronesgof.fis.services.RutaService;
 
 @Controller
+@RequestMapping("/api/routes")
 public class RutaController {
 
     @Autowired
     private RutaService rutaService;
 
     // Muestra el formulario de creación de rutas
-    @RequestMapping("/api/routes")
-    @GetMapping("/routes")
+    @GetMapping
     public String showRouteForm(Model model) {
         model.addAttribute("createRouteDto", new CreateRutaDto());
         model.addAttribute("routes", rutaService.findAll()); // Agregamos la lista de rutas existentes
@@ -28,7 +28,7 @@ public class RutaController {
     }
 
     // Crea una nueva ruta a partir de los datos enviados por el formulario
-    @PostMapping("/routes")
+    @PostMapping
     public String createRoute(@ModelAttribute CreateRutaDto createRouteDto) {
         Ruta ruta = new Ruta();
         ruta.setCodigo(createRouteDto.getCodigo());
