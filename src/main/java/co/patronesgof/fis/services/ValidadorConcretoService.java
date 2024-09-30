@@ -12,19 +12,16 @@ public class ValidadorConcretoService implements ValidadorVisitorInterfaceServic
 
     @Override
     public void visitar(Estudiante estudiante) {
-        // Lógica de validación para estudiante
         System.out.println("Validando estudiante con tarifa especial");
     }
 
     @Override
     public void visitar(PersonaMayor personaMayor) {
-        // Lógica de validación para persona mayor
         System.out.println("Validando persona mayor con tarifa reducida");
     }
 
     @Override
     public void visitar(UsuarioRegular usuarioRegular) {
-        // Lógica de validación para usuario regular
         System.out.println("Validando usuario regular con tarifa estándar");
     }
 }

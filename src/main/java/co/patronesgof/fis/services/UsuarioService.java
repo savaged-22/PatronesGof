@@ -24,14 +24,6 @@ public class UsuarioService {
         return usuarioRepository.findById(id);
     }
 
-    // Cambiar la lógica de guardar un Usuario usando CreateUsuarioDto
-    public Usuario save(CreateUsuarioDto usuarioDto) {
-        Usuario usuario = new Usuario();
-        usuario.setNombre(usuarioDto.getNombre());
-        usuario.setTipoUsuario(usuarioDto.getTipoUsuario());
-        return usuarioRepository.save(usuario);
-    }
-
     // Sobrecargar el método save para aceptar un Usuario completo
     public Usuario save(Usuario usuario) {
         return usuarioRepository.save(usuario);
@@ -39,5 +31,13 @@ public class UsuarioService {
 
     public void deleteById(Long id) {
         usuarioRepository.deleteById(id);
+    }
+
+     // Cambiar la lógica de guardar un Usuario usando CreateUsuarioDto
+     public Usuario save(CreateUsuarioDto usuarioDto) {
+        Usuario usuario = new Usuario();
+        usuario.setNombre(usuarioDto.getNombre());
+        usuario.setTipoUsuario(usuarioDto.getTipoUsuario());
+        return usuarioRepository.save(usuario);
     }
 }
