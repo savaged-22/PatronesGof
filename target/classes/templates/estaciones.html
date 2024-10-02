@@ -1,31 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Estación</title>
+    <title>Estaciones</title>
 </head>
 <body>
-    <h1>Crear Nueva Estación</h1>
-    
-    <form action="/estaciones" method="post">
-        <label for="nombre">Nombre de la Estación:</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <br>
+    <h1>Lista de Estaciones</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+        </tr>
+        <tr th:each="estacion : ${estaciones}">
+            <td th:text="${estacion.id}"></td>
+            <td th:text="${estacion.nombre}"></td>
+            <td th:text="${estacion.estado}"></td>
+        </tr>
+    </table>
 
-        <label for="estado">Estado:</label>
-        <input type="text" id="estado" name="estado" required>
-        <br><br>
-
+    <h2>Crear Nueva Estación</h2>
+    <form th:action="@{/estaciones/create}" th:object="${estacion}" method="post">
+        <input type="text" th:field="*{nombre}" placeholder="Nombre de la estación" />
+        <input type="text" th:field="*{estado}" placeholder="Estado de la estación" />
         <button type="submit">Crear Estación</button>
     </form>
-
-    <h2>Estaciones Existentes</h2>
-    <ul>
-        <th:block th:each="estacion : ${estaciones}">
-            <li th:text="${estacion.nombre} + ' - ' + ${estacion.estado}"></li>
-        </th:block>
-    </ul>
-
 </body>
 </html>

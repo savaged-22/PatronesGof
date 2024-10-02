@@ -1,38 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Ruta</title>
+    <title>Routes</title>
 </head>
 <body>
-    <h1>Crear Nueva Ruta</h1>
-    
-    <form action="/routes" method="post">
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo" required>
-        <br>
+    <h1>Lista de Rutas</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+        </tr>
+        <tr th:each="ruta : ${rutas}">
+            <td th:text="${ruta.id}"></td>
+            <td th:text="${ruta.nombre}"></td>
+            <td th:text="${ruta.tipo}"></td>
+        </tr>
+    </table>
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <br>
-
-        <label for="tipoRuta">Tipo de Ruta:</label>
-        <select id="tipoRuta" name="tipoRuta" required>
+    <h2>Crear Nueva Ruta</h2>
+    <form th:action="@{/routes/create}" th:object="${ruta}" method="post">
+        <input type="text" th:field="*{nombre}" placeholder="Nombre de la ruta" />
+        <select th:field="*{tipo}">
             <option value="Local">Local</option>
             <option value="Troncal">Troncal</option>
         </select>
-        <br><br>
-
         <button type="submit">Crear Ruta</button>
     </form>
-
-    <h2>Rutas Existentes</h2>
-    <ul>
-        <th:block th:each="ruta : ${routes}">
-            <li th:text="${ruta.nombre} + ' (' + ${ruta.codigo} + ')'"></li>
-        </th:block>
-    </ul>
-
 </body>
 </html>

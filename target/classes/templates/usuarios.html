@@ -1,35 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Usuario</title>
+    <title>Usuarios</title>
 </head>
 <body>
-    <h1>Crear Nuevo Usuario</h1>
-    
-    <form action="/usuarios" method="post">
-        <label for="nombre">Nombre del Usuario:</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <br>
+    <h1>Lista de Usuarios</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+        </tr>
+        <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.id}"></td>
+            <td th:text="${usuario.nombre}"></td>
+            <td th:text="${usuario.tipo}"></td>
+        </tr>
+    </table>
 
-        <label for="tipoUsuario">Tipo de Usuario:</label>
-        <select id="tipoUsuario" name="tipoUsuario" required>
+    <h2>Crear Nuevo Usuario</h2>
+    <form th:action="@{/usuarios/create}" th:object="${usuario}" method="post">
+        <input type="text" th:field="*{nombre}" placeholder="Nombre del usuario" />
+        <select th:field="*{tipo}">
             <option value="Regular">Regular</option>
             <option value="Estudiante">Estudiante</option>
-            <option value="PersonaMayor">Persona Mayor</option>
+            <option value="Mayor">Mayor</option>
         </select>
-        <br><br>
-
         <button type="submit">Crear Usuario</button>
     </form>
-
-    <h2>Usuarios Existentes</h2>
-    <ul>
-        <th:block th:each="usuario : ${usuarios}">
-            <li th:text="${usuario.nombre} + ' - ' + ${usuario.tipoUsuario}"></li>
-        </th:block>
-    </ul>
-
 </body>
 </html>
