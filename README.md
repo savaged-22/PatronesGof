@@ -64,7 +64,7 @@ El proyecto sigue una estructura estándar de Spring Boot con Maven:
 
 ## Uso
 
-- Accede a la aplicación en `http://localhost:8080/index`.
+- Accede a la aplicación en `http://localhost:8080`.
 - Puedes crear rutas en `http://localhost:8080/routes`, crear estaciones en `http://localhost:8080/estaciones` y gestionar usuarios en `http://localhost:8080/usuarios`.
 
 ## Base de Datos
