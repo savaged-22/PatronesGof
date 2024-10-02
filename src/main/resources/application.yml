@@ -2,7 +2,7 @@ spring:
   application:
     name: music-shop
   datasource:
-    url: "jdbc:postgresql://4.tcp.ngrok.io:12394/transmilenio_db"
+    url: "jdbc:postgresql://4.tcp.ngrok.io:16786/transmilenio_db"
     username: savaged22
     password: secret
     driver-class-name: org.postgresql.Driver

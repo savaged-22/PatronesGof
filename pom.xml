@@ -68,6 +68,11 @@
             <groupId>jakarta.persistence</groupId>
          <artifactId>jakarta.persistence-api</artifactId> <!-- O la versión que prefieras -->
         </dependency>
+        <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
     </dependencies>
 
     <build>
